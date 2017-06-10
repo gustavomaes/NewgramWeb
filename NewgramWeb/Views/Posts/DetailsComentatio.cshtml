@@ -1,0 +1,68 @@
+﻿@model NewgramWeb.Models.PostInteracao
+
+@{
+    ViewBag.Title = "Detalhes do Comentário";
+}
+
+<h2>Detalhes do Comentário</h2>
+
+<div>
+    <h4>Comentário</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Nome do Usuário")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioDados.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Texto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Texto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadeDenuncias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadeDenuncias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Denunciado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Denunciado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bloqueado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bloqueado)
+        </dd>
+
+    </dl>
+
+    @Html.Partial("~/Views/Posts/ListaDenuncias.cshtml", (IEnumerable<NewgramWeb.Models.PostInteracao>)ViewBag.Denuncias)
+
+</div>
+<p>
+    @Html.ActionLink("Voltar para a lista", "ComentariosDenunciados")
+</p>

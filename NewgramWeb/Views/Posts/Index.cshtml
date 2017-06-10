@@ -1,0 +1,91 @@
+﻿@model IEnumerable<NewgramWeb.Models.Post>
+
+@{
+    ViewBag.Title = "Posts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Posts</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Nome do Usuário")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantidadeCurtidas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantidadeComentarios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantidadeDenuncias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloqueado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioDados.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @if (item.Foto != null)
+                {
+                    var base64 = Convert.ToBase64String(item.Foto);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                <img src="@imgSrc" width="100" height="100" />
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantidadeCurtidas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantidadeComentarios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantidadeDenuncias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bloqueado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,108 @@
+﻿@model NewgramWeb.Models.Post
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Nome do Usuário")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioDados.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @if (Model.Foto != null)
+            {
+                var base64 = Convert.ToBase64String(Model.Foto);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                <img src="@imgSrc" width="200" height="200" />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadeCurtidas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadeCurtidas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadeComentarios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadeComentarios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadeDenuncias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadeDenuncias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bloqueado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bloqueado)
+        </dd>
+
+    </dl>
+
+    @Html.Partial("~/Views/Posts/ListaDenuncias.cshtml", (IEnumerable<NewgramWeb.Models.PostInteracao>)ViewBag.Denuncias)
+
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
+</p>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<NewgramWeb.Models.PostInteracao>
+
+@{
+    ViewBag.Title = "Comentários Denunciados";
+}
+
+<h2>Comentários Denunciados</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Nome do Usuário")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Texto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantidadeDenuncias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Denunciado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bloqueado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioDados.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Texto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeDenuncias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Denunciado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bloqueado)
+            </td>
+            <td>
+                @Html.ActionLink("Detalhes", "DetailsComentario", new { id = item.Id }) |
+                @Html.ActionLink("Apagar", "DeleteComentario", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

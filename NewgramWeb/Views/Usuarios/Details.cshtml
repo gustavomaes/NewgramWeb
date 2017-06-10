@@ -1,0 +1,89 @@
+﻿@model NewgramWeb.Models.Usuario
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bloqueado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bloqueado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @if (Model.Foto != null)
+            {
+                var base64 = Convert.ToBase64String(Model.Foto);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+                <img src="@imgSrc" />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadePosts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadePosts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadeSeguindo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadeSeguindo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantidadeSeguidores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantidadeSeguidores)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataCadastro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para Lista", "Index")
+</p>
