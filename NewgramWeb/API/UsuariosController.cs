@@ -162,7 +162,7 @@ namespace NewgramWeb.API
 
             try
             {
-                UsuarioLogado.Foto = FotoBase64.ToByteArray().Redimenciona(200, 200);
+                UsuarioLogado.Foto = FotoBase64.ToByteArray();
                 UsuarioLogado.FotoDataAtualizacao = DateTime.Now;
                 db.SaveChanges();
 
